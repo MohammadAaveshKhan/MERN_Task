@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
+
+    <title>Registration_form</title>
+</head>        
+<body>
+
+    <section class="flex justify-center items-center h-screen w-screen">
+     
+        <div class="border-2 rounded-2xl w-fit">
+            <div class="flex justify-center">
+                <h1 class="text-3xl mb-10 mt-4 font-extrabold">Registration Form</h1>
+                <br>
+            </div>
+                <form action="post">
+                    <label class="ms-12 mt-4 font-bold" for="name">Full Name</label>
+                    <br>
+                    <input class="border-2 border-blue-500 ms-12 w-76 me-16 bg-gray-200" type="text" placeholder="Enter your full name" id="name" required>
+                    <br>
+                    <br>
+                    <label class="ms-12 font-bold" for="email_id">Email Id</label>
+                    <br>
+                    <input class="border-2 border-blue-500 ms-12 w-76 bg-gray-200" type="email" placeholder="Enter your valid email id" id="email_id" required>
+                    <br>
+                    <br>
+                    <label class="ms-12 font-bold" for="username">User Name</label>
+                    <br>
+                    <input class="border-2 border-blue-500 ms-12 w-76 bg-gray-200" type="text" placeholder="Enter username" id="username" required>
+                    <br>
+                    <br>
+                    <label class="ms-12 font-bold" for="password">Password</label>
+                    <br>
+                    <input class="border-2 border-blue-500 ms-12 w-76 bg-gray-200" type="password" placeholder="Enter password" id="password" required>
+                    <br>
+                    <br>
+                    <div class="flex justify-center items-center">
+                        <button class="border-2 w-72 h-10 mb-1 bg-blue-600 text-white text-xl rounded-xl" onclick="SaveRegisteredData()">Register</button>
+                    </div>
+                    <p class="flex justify-center mb-5">Already have an account? <a href="log_in.html" class="text-black underline ms-2"> login.</a></p>
+                    
+                </form>
+                
+        </div>
+    </section>
+    <script>
+        var listOfRegistered = JSON.parse(localStorage.getItem('Registration')) ??[]
+        function SaveRegisteredData(){
+            var name = document.getElementById("name").value
+            var email = document.getElementById("email_id").value
+            var username = document.getElementById("username").value
+            var pwd = document.getElementById("password").value
+            var RegisterObject = {
+                Full_Name : name.toLowerCase(),
+                Email : email.toLowerCase(),
+                Username : username.toLowerCase(),
+                Password : pwd.toLowerCase()
+            }
+            listOfRegistered.push(RegisterObject)
+            localStorage.setItem("Registration",JSON.stringify(listOfRegistered))
+        }
+    </script>
+</body>
+</html>

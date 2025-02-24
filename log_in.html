@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
+
+    <title>Login_form</title>
+</head>
+<body>
+    <section class="flex justify-center items-center h-screen w-screen">
+        <div class="border-2 rounded-2xl w-fit ">
+            <div class="flex justify-center">
+                <h1 class="text-2xl mb-10 mt-4 font-extrabold" >Login Form</h1>
+                <br>
+            </div>
+  
+                <label class="ms-12 mt-4 font-bold" for="username">Username</label>
+                <br>
+                <input class="border-2 border-blue-500 text-black ms-12 w-76 me-16 bg-gray-200" type="text" id="username" placeholder="Enter username">
+                <br>
+                <br>
+                <label class="ms-12 mt-4 font-bold" for="password">Password</label>
+                <br>
+                <input class="border-2 border-blue-500 ms-12 w-76 bg-gray-200 text-black" type="password" id="password" placeholder="Enter valid password">
+                <br>
+                <br>
+                <input class="ms-24" type="radio" name="option" id="admin" value="admin">
+                <label class="font-bold" for="male">Admin</label>
+                <input class="ms-12" type="radio" name="option" id="user" value="user">
+                <label class="font-bold" for="female">User</label>
+                <br>
+                <br>
+                <div class="flex justify-center items-center">
+                    <button class="border-2 w-42 h-10 mb-1  bg-blue-600 text-white text-xl rounded-xl" onclick="chack()">Log In</button>
+                </div>
+                <p class="flex justify-center mb-5">Have you registered?<a href="registration.html" class="ms-2 text-black underline">Register here.</a></p>
+                
+         
+
+        </div>
+    </section>
+    <script>
+    function chack(){
+        
+        var uname = document.getElementById('username').value
+        var pwd = document.getElementById('password').value
+        data = JSON.parse(localStorage.getItem('Registration'))
+     
+        if( data.filter((a)=>uname.toLowerCase() == a.Username && pwd == a.Password)){
+            alert("login success")
+            if(document.getElementById('admin').checked){
+            window.location.href = "question_added.html"
+            }else if(document.getElementById('user').checked){
+                window.location.href ="quiz_start.html"
+
+        }
+      
+      
+    }else{
+        alert('login unsuccess')
+     }
+    }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
