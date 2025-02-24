@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
 </head>
 <body>
-    <h1 style="color: darkorange; width: 50pt;">I am learning HTML.</h1>
-    <h1>I will learn css.</h1>
-    <h1>Then, I will learn MERN stack.</h1>
-    <br>
-    <a href="tittle_project.html">click here for my first task</a>
-    <a href="Tailwind_Task.html">click here for pralee task</a>
+    <header class="bg-black text-white flex justify-between px-12 py-6">
+        <h1 class="text-4xl font-extrabold">Portfolio</h1>
+        <ul class="flex">
+            <li class="me-6 text-2xl font-semibold"><a href="#home">Home</a></li>
+            <li class="me-6 text-2xl font-semibold"><a href="#about">About</a></li>
+            <li class="me-6 text-2xl font-semibold"><a href="#projects">Projects</a></li>
+            <li class="me-6 text-2xl font-semibold"><a href="#tasks">Tasks</a></li>
+            <li class="me-6 text-2xl font-semibold"><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+    <main>   
+        <section class="bg-[url(portfolio_bg_image.jpg)] bg-no-repeat h-screen bg-cover" id="#home">
+            <div class="flex justify-center">
+                <h1 class="text-5xl font-bold text-white font-serif mt-4">Practice Make A Man A Perfect.</h1>
+            </div>
+            <div class="flex justify-center">
+                <h1 class="font-bold text-white font-serif text-4xl mt-64">Hey There, I Am A Full Stack Developer.</h1>
+                
+            </div>
+        </section>
+
+        <section id="tasks">
+            <h1 class="text-4xl text-center">Tasks</h1>
+            <div class="flex">
+                <div class="w-full m-4 shadow-2xl shadow-gray-700 rounded-2xl p-12">
+                    <a href="registration.html">Registration Form</a>
+                </div>
+                <div class="w-full m-4 shadow-2xl shadow-gray-700 rounded-2xl p-12">
+                    <a href="log_in.html">Login Form</a>
+                </div>
+                <div class="w-full m-4 shadow-2xl shadow-gray-700 rounded-2xl p-12">
+                    <a href="quiz_start.html">Start Quiz</a>
+                </div>
+                <div class="w-full m-4 shadow-2xl shadow-gray-700 rounded-2xl p-12">
+                    <a href="question_added.html">Questions Insertion</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <section></section>
+
 </body>
 </html>
