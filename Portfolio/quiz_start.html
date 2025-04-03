@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Start</title>
+    
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
+
+</head>
+<body>
+    <section class="flex justify-center items-center h-screen w-screen">
+        <div class="border-2 rounded-2xl w-fit">
+            <div class="flex justify-center">
+                <h1 class="text-3xl font-bold mt-4 mb-10 ms-16 me-16">Carefully Complete Your Quiz</h1>
+            </div>
+            <div>
+                <h1 class="ms-8 text-xl font-bold">QNo.<span id="qno"></span> <span id="que"></span></h1> 
+            </div>
+            <div class="ms-8 font-bold mt-4 ">
+                A. <input type="radio" name="options" onclick="check()" /><span id="op1"></span><br />
+                B. <input type="radio" name="options" onclick="check()" /><span id="op2"></span><br />
+                C. <input type="radio" name="options" onclick="check()" /><span id="op3"></span><br />
+                D. <input type="radio" name="options" onclick="check()" /><span id="op4"></span><br />
+            </div>
+            <div class="flex justify-end">
+                <button class="mt-2 mb-4 me-12 border-2 h-10 text-xl w-24 rounded-xl bg-green-600 text-white" onclick="next()">Next</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        var listOfQue = JSON.parse(localStorage.getItem("Question"))
+        var currentIndex = 0
+        var score = 0
+        setQuestion()
+        function setQuestion(){
+            var question = listOfQue[currentIndex]
+            document.getElementById("qno").innerHTML = currentIndex + 1
+            document.getElementById("que").innerHTML = question.Question
+            document.getElementById("op1").innerHTML = question.option_1 
+            document.getElementById("op2").innerHTML = question.option_2
+            document.getElementById("op3").innerHTML = question.option_3
+            document.getElementById("op4").innerHTML = question.option_4
+
+        }
+        function next(){
+            if(currentIndex < listOfQue.length) {
+                currentIndex++
+                setQuestion()
+            }else{
+                document.body.innerHTML = "<h1>"+score+"</h1>"
+                alert("no more questions and your score is :- "+score)
+            }
+        }
+        function check(){
+            var radioButtons = document.getElementsByName("options")
+            var op1Value = document.getElementById("op1").innerText
+            var op2Value = document.getElementById("op2").innerText
+            var op3Value = document.getElementById("op3").innerText
+            var op4Value = document.getElementById("op4").innerText
+            for(var i=0; i<4; i++){
+                var button = radioButtons[i]
+                if(i==0 && button.checked){
+                    if(listOfQue[currentIndex].Answer==op1Value){
+                        score++
+                    }
+                }
+                if(i==1 && button.checked){
+                    if(listOfQue[currentIndex].Answer==op2Value){
+                        score++
+                    }
+                }
+                if(i==2 && button.checked){
+                    if(listOfQue[currentIndex].Answer==op3Value){
+                        score++
+                    }
+                }
+                if(i==3 && button.checked){
+                    if(listOfQue[currentIndex].Answer==op4Value){
+                        score++
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

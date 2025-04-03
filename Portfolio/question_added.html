@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Insertion</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
+</head>
+<body>
+    <section class="flex justify-center items-center h-screen w-screen">
+        <div class="border-2 rounded-xl w-fit">
+            <div class="flex justify-center">
+                <h1 class="text-4xl font-extrabold mt-4 mb-10">Create a New Quiz</h1>
+            </div>
+            <label class="ms-8 mt-4 font-bold text-xl" for="question">Question</label>
+            <br>
+            <input class="w-96 h-12 border-2  ms-8 me-8 px-6 text-xl"type="text" id="question" placeholder="Enter your question">
+            <br>
+            <br>
+            <div class="flex">
+                <div>
+                    <label class="ms-8 mt-4 font-bold" for="option_1">Option :-1</label>
+                    <br>
+                    <input class="w-48 h-8 border-2 ms-8 me-8 px-6" type="text" id="option_1" placeholder="Enter first option">
+                    <br>
+                    <br>
+                </div>  
+                <div>
+                    <label class="ms-8 mt-4 font-bold" for="option_2">Option :-2</label>
+                    <br>
+                    <input class="w-48 h-8 border-2 ms-8 me-8 px-6 " type="text" id="option_2" placeholder="Enter second option">
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <label class="ms-8 mt-4 font-bold" for="option_3">Option :-3</label>
+                    <br>
+                    <input class="w-48 h-8 border-2 ms-8 me-8 px-6 " type="text" id="option_3" placeholder="Enter third option">
+                    <br>
+                    <br>
+                </div>
+                <div>
+                    <label class="ms-8 mt-4 font-bold" for="option_4">Option :-4</label>
+                    <br>
+                    <input class="w-48 h-8 border-2 ms-8 me-8 px-6 " type="text" id="option_4" placeholder="Enter fourth option">
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div>
+                <label class="ms-8 mt-4 font-bold" for="ans">Correct Answer</label> 
+                <br>
+                <input class="w-64 h-8 border-2 ms-8 me-8 px-6 " type="text" id="ans" placeholder="enter your valid answer">
+                <br>
+                <br>
+            </div>
+            <div class="flex justify-center">
+                <button class="text-xl border-2 rounded-xl h-10 w-96 bg-blue-600 text-white mb-2" onclick="saveQuestion()">Add Question</button>
+                <br>
+                <br>
+            </div>
+            <div class="flex justify-center">
+                <button class="text-xl border-2 rounded-xl h-10 w-96 bg-blue-600 text-white mb-4" onclick="showQuestion()">Show Data</button>
+            </div>
+        </div>
+        <div id="question-data"></div>
+    </section>
+
+    <script>
+
+        var listOfAnswer = []
+
+        function saveQuestion(){
+
+        var question = document.getElementById("question").value
+        var option_1 = document.getElementById("option_1").value
+        var option_2 = document.getElementById("option_2").value
+        var option_3 = document.getElementById("option_3").value
+        var option_4 = document.getElementById("option_4").value
+        var ans = document.getElementById("ans").value
+        var questionObject = {
+            Question : question,
+            option_1 : option_1,
+            option_2 : option_2,
+            option_3 : option_3,
+            option_4 : option_4,
+            Answer : ans
+        }
+        listOfAnswer.push(questionObject)
+        localStorage.setItem("Question",JSON.stringify(listOfAnswer))
+    }
+
+    function showQuestion(){
+        var dataInString = localStorage.getItem("Question")
+        var listOfAnswer = JSON.parse(dataInString)
+        document.getElementById("question-data").innerHTML = 
+        listOfAnswer.map((question,i)=>
+    `<div style = "box-shadow:1px 1px 5px 1px gray; padding:20x; margin:20px;">
+        <h1>Question: ${question.Question}</h3>
+        <h3>Option_1: ${question.option_1}</h3>
+        <h3>Option_2: ${question.option_2}</h3>
+        <h3>Option_3: ${question.option_3}</h3>
+        <h3>Option_4: ${question.option_4}</h3>
+        <h1>Correct Answer: ${question.Answer}</h1></div>`)                                            
+    }
+
+    
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="first.css">
+
+</head>
+</head>
+<body>
+
+    <section class="bg-[url(calculator.jpg)] flex bg-no-repeat bg-cover h-screen justify-center items-center ">
+
+        <div class=" justify-items-center border-4 ms-52 me-52  w-96 h-80 text-white bg-black ">
+
+        
+        <h1 class=" text-4xl text-center mt-12 font-extrabold underline ">Calculator</h1>
+        <br>
+        <input type="text" id="f_num" placeholder="enter first number" class="border-2 justify-center px-3">
+        <br>
+        <br> 
+        <input type="text" id="s_num" placeholder="enter second number" class="border-2 justify-center px-3 ">
+        <br>
+        <br>
+        
+        <div class="flex justify-items-center ">
+            <div class="ms-2  border-2 w-10 h-7 text-1xl">
+                <button class="text-center" onclick="plus()">ADD</button>
+            </div>
+            <div class="ms-4 border-2 w-10 h-7 text-1xl">
+                <button class="text-center" onclick="sub()">SUB</button>
+            </div>
+            <div class="ms-4 border-2 w-10 h-7 text-1xl">
+                <button class="text-center" onclick="mul()">MUL</button>
+            </div>
+            <div class="ms-4 border-2 w-10 h-7 text-1xl ">
+                <button class="text-center" onclick="div()">DIV</button>
+            </div>
+        </div>
+        <div>
+            <h1 id="ans" class="mt-4"></h1>
+        </div>
+
+        </div>
+
+    </section>
+    
+    
+    <script>
+        function plus(){
+            var f_num,s_num,ans,sum
+            f_num = document.getElementById("f_num").value
+            s_num = document.getElementById("s_num").value
+            ans = document.getElementById("ans")
+
+            sum = parseInt(f_num) + parseInt(s_num)
+
+            ans.innerHTML = "Your answer of :- " + f_num + " + " + s_num + " = " + sum
+        }
+        function sub(){
+            var f_num,s_num,ans,sub
+            f_num = document.getElementById("f_num").value
+            s_num = document.getElementById("s_num").value
+            ans = document.getElementById("ans")
+
+            sub = parseInt(f_num) - parseInt(s_num)
+
+            ans.innerHTML = "Your answer of :- " + f_num + " - " + s_num + " = " + sub
+        }
+        function mul(){
+            var f_num,s_num,ans,mul
+            f_num = document.getElementById("f_num").value
+            s_num = document.getElementById("s_num").value
+            ans = document.getElementById("ans")
+
+            mul = parseInt(f_num) * parseInt(s_num)
+
+            ans.innerHTML = "Your answer of :- " + f_num + " * " + s_num + " = " + mul
+        }
+        function div(){
+            var f_num,s_num,ans,div
+            f_num = document.getElementById("f_num").value
+            s_num = document.getElementById("s_num").value
+            ans = document.getElementById("ans")
+
+            div = parseInt(f_num) / parseInt(s_num)
+
+            ans.innerHTML = "Your answer of :- " + f_num + " / " + s_num + " = " + div
+        }
+    </script>
+</body>
+</html>
